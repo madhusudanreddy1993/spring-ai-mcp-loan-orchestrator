@@ -11,7 +11,6 @@ package com.example.loanmcp.domain;
  */
 public enum WorkflowStatus {
     PENDING,
-    IN_PROGRESS,
     APPROVED,
     REJECTED,
     OVERRIDDEN
