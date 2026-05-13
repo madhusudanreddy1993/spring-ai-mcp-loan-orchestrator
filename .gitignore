@@ -1,0 +1,11 @@
+/target/
+/data/
+logs/
+.settings/
+.classpath
+.project
+.pmd
+.idea/
+*.iml
+/bin/
+src/main/resources/application_dev.properties

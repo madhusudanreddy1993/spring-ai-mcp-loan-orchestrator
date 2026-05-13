@@ -1,0 +1,57 @@
+package rules
+
+import com.example.loanmcp.domain.LoanApplication;
+
+global java.util.List results;
+
+rule "Low Credit Score"
+when
+    $app : LoanApplication(
+        creditScore < 600
+    )
+then
+    results.add("REJECT_LOW_CREDIT");
+end
+
+
+rule "High Debt Ratio"
+when
+    $app : LoanApplication(
+        existingLoanAmount > (income * 5)
+    )
+then
+    results.add("REJECT_HIGH_DEBT");
+end
+
+
+rule "Under Age"
+when
+    $app : LoanApplication(
+        age < 21
+    )
+then
+    results.add("REJECT_UNDERAGE");
+end
+
+
+rule "Low Income"
+when
+    $app : LoanApplication(
+        income < 30000
+    )
+then
+    results.add("REJECT_LOW_INCOME");
+end
+
+
+rule "Approved Loan"
+when
+    $app : LoanApplication(
+        age >= 21,
+        income >= 30000,
+        creditScore >= 700,
+        existingLoanAmount <= (income * 5)
+    )
+then
+    results.add("APPROVED");
+end
